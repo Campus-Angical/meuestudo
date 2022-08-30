@@ -1,107 +1,99 @@
-
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(title: Text("Meu Estudo"),
-      actions: [Icon(Icons.search)],
-      centerTitle: true,),
-      bottomNavigationBar: 
-      BottomNavigationBar (
-        items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: "inicio"),
-        BottomNavigationBarItem(icon: Icon(Icons.timelapse),label: "Horarios"),
-        BottomNavigationBarItem(icon: Icon(Icons.settings),label: "Configuracao"),
-        
-      ]),
-      drawer: Drawer(
-        child: Column(children: [
-          UserAccountsDrawerHeader(accountName: Text("Cleiton Jonnas"), accountEmail: Text("cleitinhoextreme007@gmail.com",),
-          currentAccountPicture: ClipOval(child:  Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTggauC9GzZ20cDt94Nzm2-z-qvmi9Jrh1JK-6n1HG-derBaewvGMJTsHMcw8ndDX7Fjqc&usqp=CAU"),),
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          title: Text("Meu Estudo"),
+          actions: [Icon(Icons.search)],
+          centerTitle: true,
+        ),
+        bottomNavigationBar: BottomNavigationBar(items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "inicio"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.timelapse), label: "Horarios"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: "Configuracao"),
+        ]),
+        drawer: Drawer(
+          child: Column(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text("Cleiton Jonnas"),
+                accountEmail: Text(
+                  "cleitinhoextreme007@gmail.com",
+                ),
+                currentAccountPicture: ClipOval(
+                  child: Image.network(
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTggauC9GzZ20cDt94Nzm2-z-qvmi9Jrh1JK-6n1HG-derBaewvGMJTsHMcw8ndDX7Fjqc&usqp=CAU"),
+                ),
+              ),
+              ListTile(
+                title: Text("Conta"),
+                leading: Icon(Icons.person),
+              ),
+              ListTile(
+                title: Text("notificacoes"),
+                leading: Icon(Icons.push_pin),
+              ),
+              ListTile(
+                title: Text("Atividades"),
+                leading: Icon(Icons.list_alt),
+              ),
+              ListTile(
+                title: Text("Atividades Pendentes"),
+                leading: Icon(Icons.list),
+              ),
+              ListTile(
+                title: Text("Materias arquivadas"),
+                leading: Icon(Icons.person),
+              ),
+              ListTile(
+                title: Text("Sair"),
+                leading: Icon(Icons.logout),
+              ),
+            ],
           ),
-          ListTile(
-            title: Text("Conta"),
-            leading: Icon(Icons.person),
-          ),
+        ),
+        body: GridView(
+          padding: EdgeInsets.fromLTRB(18, 14, 18, 14),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, mainAxisSpacing: 14, crossAxisSpacing: 14),
+          children: [_buildCard(), _buildCard()],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (() {}),
+          child: Icon(Icons.add),
+        ));
+  }
 
-           ListTile(
-            title: Text("notificacoes"),
-            leading: Icon(Icons.push_pin),
-          ),
-
-           ListTile(
-            title: Text("Atividades"),
-            leading: Icon(Icons.list_alt),
-          ),
-
-           ListTile(
-            title: Text("Atividades Pendentes"),
-            leading: Icon(Icons.list),
-          ),
-
-           ListTile(
-            title: Text("Materias arquivadas"),
-            leading: Icon(Icons.person),
-          ),
-
-           ListTile(
-            title: Text("Sair"),
-            leading: Icon(Icons.logout),
-          ),
-
-        ],),
-      ),
-
-      body: GridView(
-        padding: EdgeInsets.fromLTRB(18, 14, 18, 14),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisSpacing: 14, crossAxisSpacing: 14),
-        
+  Widget _buildCard() {
+    return Card(
+      shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      color: Color.fromARGB(255, 0, 140, 255),
+      child: Column(
         children: [
-        Card(
-          shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-          color: Color.fromARGB(255, 79, 8, 3),
-          child: Container(
-            //color: Colors.blue,
+          Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: Colors.white
+          
           ),
-        ),
-
-        Card(
-          shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-          color: Colors.red,
-          child: Container(
-            //color: Colors.blue,
+            height: 70,
+            width: 110,
           ),
-        ),
-       Card(
-          shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-          color: Colors.red,
-          child: Container(
-            //color: Colors.blue,
-          ),
-        ),
-        Card(
-          shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-          color: Colors.red,
-          child: Container(
-            //color: Colors.blue,
-          ),
-        ),
+        
+          Text(
+            "matematica",
+            style: TextStyle(fontSize: 18, color: Colors.white),
+          )
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (() {
-        
-      }),
-      child: Icon(Icons.add),
-      
-    )
     );
-    
   }
 }
