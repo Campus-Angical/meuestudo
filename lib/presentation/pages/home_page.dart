@@ -3,12 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  List disciplinas = ["portugues", "ingles", "filosofia"];
+
+  HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromARGB(255, 24, 24, 38),
         appBar: AppBar(
           title: Text("Meu Estudo"),
           actions: [Icon(Icons.search)],
@@ -36,27 +38,30 @@ class HomePage extends StatelessWidget {
               ),
               ListTile(
                 title: Text("Conta"),
-                leading: Icon(Icons.person),
+                leading: Icon(Icons.person, color: Colors.black),
               ),
               ListTile(
                 title: Text("notificacoes"),
-                leading: Icon(Icons.push_pin),
+                leading: Icon(Icons.push_pin, color: Colors.black),
               ),
               ListTile(
                 title: Text("Atividades"),
-                leading: Icon(Icons.list_alt),
+                leading: Icon(Icons.list_alt, color: Colors.black),
               ),
               ListTile(
                 title: Text("Atividades Pendentes"),
-                leading: Icon(Icons.list),
+                leading: Icon(Icons.list, color: Colors.black),
               ),
               ListTile(
                 title: Text("Materias arquivadas"),
-                leading: Icon(Icons.person),
+                leading: Icon(Icons.person, color: Colors.black),
               ),
               ListTile(
                 title: Text("Sair"),
-                leading: Icon(Icons.logout),
+                leading: Icon(
+                  Icons.logout,
+                  color: Colors.red,
+                ),
               ),
             ],
           ),
@@ -65,7 +70,7 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(18, 14, 18, 14),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3, mainAxisSpacing: 14, crossAxisSpacing: 14),
-          children: [_buildCard(), _buildCard()],
+          children: _buildGridOptions(),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: (() {}),
@@ -73,23 +78,29 @@ class HomePage extends StatelessWidget {
         ));
   }
 
-  Widget _buildCard() {
+  List<Widget> _buildGridOptions() {
+    List<Widget> lista = [];
+    for (String d in disciplinas) {
+      lista.add(_buildCard(d));
+    }
+    return lista;
+  }
+
+  Widget _buildCard(String disciplina) {
     return Card(
       shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-      color: Color.fromARGB(255, 0, 140, 255),
+      color: Colors.blue,
       child: Column(
         children: [
           Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: Colors.white
-          
-          ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                color: Colors.white),
             height: 70,
             width: 110,
           ),
-        
           Text(
-            "matematica",
+            disciplina,
             style: TextStyle(fontSize: 18, color: Colors.white),
           )
         ],
