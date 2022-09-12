@@ -3,6 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  //controlando o current index
+  int TelaAtual = 0;
+  //telas 
+  final Telas = [];
   List disciplinas = ["portugues", "ingles", "filosofia"];
 
   HomePage({Key? key}) : super(key: key);
@@ -16,13 +20,19 @@ class HomePage extends StatelessWidget {
           actions: [Icon(Icons.search)],
           centerTitle: true,
         ),
-        bottomNavigationBar: BottomNavigationBar(items: [
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.red,
+          currentIndex: TelaAtual,
+          items: [
+          
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "inicio"),
           BottomNavigationBarItem(
               icon: Icon(Icons.timelapse), label: "Horarios"),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings), label: "Configuracao"),
-        ]),
+
+        ],
+        ),
         drawer: Drawer(
           child: Column(
             children: [
