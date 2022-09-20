@@ -13,9 +13,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return GetMaterialApp(
       initialBinding: DependenciesBindig(),
       home:  HomePage(),
+      
     );
+    
   }
 }
