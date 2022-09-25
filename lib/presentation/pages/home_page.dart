@@ -1,18 +1,15 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:meuestudo/presentation/controllers/home_ctrl.dart';
 
-class HomePage extends StatelessWidget {
-  //controlando o current index
-  int TelaAtual = 0;
-  //telas 
-  final Telas = [];
+class HomePage extends GetWidget<HomeCtrl> {
   List disciplinas = ["portugues", "ingles", "filosofia"];
 
   HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    controller.search();
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 24, 24, 38),
         appBar: AppBar(
@@ -22,7 +19,7 @@ class HomePage extends StatelessWidget {
         ),
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.red,
-          currentIndex: TelaAtual,
+          currentIndex: 0,
           items: [
           
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "inicio"),
